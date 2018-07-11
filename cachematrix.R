@@ -1,15 +1,35 @@
-## Put comments here that give an overall description of what your
-## functions do
+## The function Cache Matrix and Inverse Matrix
 
-## Write a short comment describing this function
+## functions cache the vector to load faster 
 
-makeCacheMatrix <- function(x = matrix()) {
-
+makeCacheMatrix <- function(MatInput = matrix()) {
+        InverseMatrix <- NULL
+        set <- function(y) {
+                MatInput <<- y
+                InverseMatrix <<- NULL
+        }
+        get <- function() MatInput
+        setInverse <- function(solve) InverseMatrix <<- solve
+        getInverse <- function() InverseMatrix
+        list(set = set,
+             get = get,
+             setInverse = setInverse,
+             getInverse = getInverse)
 }
 
+## The function cache and Inverse the Matrix 
+cacheSolve <- function(MatInput, ...) {
 
-## Write a short comment describing this function
 
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        InverseMatrix <- MatInput$getInverse()
+        if (!is.null(InverseMatrix)) {
+                message("getting cached data")
+                return(InverseMatrix)
+        }
+        mat <- MatInput$get()
+        InverseMatrix <- solve(mat, ...)
+        MatInput$setInverse(InverseMatrix)
+        InverseMatrix
+        ## Return a inverted matrix if the Matrix is non-singular
+
 }
