@@ -1,4 +1,4 @@
-## The function Cache Matrix and Inverse Matrix
+## The function Cache and Inverse the Matrix that was inputted.
 
 ## functions cache the vector to load faster 
 
@@ -17,7 +17,8 @@ makeCacheMatrix <- function(MatInput = matrix()) {
              getInverse = getInverse)
 }
 
-## The function cache and Inverse the Matrix 
+## The function cached was verified "getting cached data" and showed, or Inversed by the cacheSolve
+
 cacheSolve <- function(MatInput, ...) {
 
 
